@@ -151,6 +151,21 @@ class StreamToExpander:
 # Streamlit interface
 def run_crewai_app():
     st.title("AI Agent Business Product Launch")
+    
+    # Add JavaScript for auto-scrolling
+    st.markdown(
+        """
+        <script>
+        const scrollToBottom = () => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        };
+        const observer = new MutationObserver(scrollToBottom);
+        observer.observe(document.body, { childList: true, subtree: true });
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+    
     with st.expander("About the Team:"):
         st.subheader("Diagram")
         left_co, cent_co,last_co = st.columns(3)
